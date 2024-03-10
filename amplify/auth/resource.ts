@@ -6,8 +6,9 @@ import { defineAuth } from '@aws-amplify/backend';
  * @see https://docs.amplify.aws/gen2/build-a-backend/auth
  */
 export const auth = defineAuth({
+  accountRecovery: 'EMAIL_ONLY',
+  name: 'auth', // The name of the auth resource in the schema
   loginWith: {
-    email: true,
     // add social providers
     // externalProviders: {
     /**
@@ -40,5 +41,9 @@ export const auth = defineAuth({
     //   mutable: true,
     //   required: false,
     // },
+    preferredUsername: {
+      mutable: true,
+      required: true,
+    },
   },
 });
